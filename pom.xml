@@ -53,6 +53,7 @@
         <com.relevantcodes.extentreports.version>2.41.2</com.relevantcodes.extentreports.version>
         <com.jayway.restassured.rest_assured.version>2.9.0</com.jayway.restassured.rest_assured.version>
         <com.aventstack.extentreports.version>4.0.9</com.aventstack.extentreports.version>
+        <io.github.bobonigarcia.webdrivermanager.version>3.7.0</io.github.bobonigarcia.webdrivermanager.version>
         <!--build-->
         <resources.directory>src/main/resources</resources.directory>
         <test.resources.directory>src/test/resources</test.resources.directory>
@@ -64,6 +65,12 @@
         <suiteXmlFile.directory>src/test/resources/testSuite.xml</suiteXmlFile.directory>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${io.github.bobonigarcia.webdrivermanager.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
