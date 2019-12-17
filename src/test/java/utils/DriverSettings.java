@@ -1,5 +1,6 @@
 package utils;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -25,14 +26,19 @@ class DriverSettings {
 
     @Step("Run browser")
     static WebDriver runBrowser() {
-        if (SessionObjects.getBrowserName().equals("chrome"))
-            driver = chromeUtils.setUpChromeDriver();
-        else if (SessionObjects.getBrowserName().equals("firefox"))
-            driver = firefoxUtils.setUpFirefoxDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(TimeOuts.TIME_DRIVER_IMPLICITY_WAIT, TimeUnit.SECONDS);
-        driver.get(SessionObjects.getBasicUrl());
-        log.info("Run webdriver on the page: " + SessionObjects.getBasicUrl());
+        Allure.attachment("Browser: ",SessionObjects.getBrowserName());
+        try {
+            if (SessionObjects.getBrowserName().equals("chrome"))
+                driver = chromeUtils.setUpChromeDriver();
+            else if (SessionObjects.getBrowserName().equals("firefox"))
+                driver = firefoxUtils.setUpFirefoxDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(TimeOuts.TIME_DRIVER_IMPLICITY_WAIT, TimeUnit.SECONDS);
+            driver.get(SessionObjects.getBasicUrl());
+            log.info("Run webdriver on the page: " + SessionObjects.getBasicUrl());
+        }catch (Exception e){
+            log.error("Error with set up driver");
+        }
         return driver;
     }
 
