@@ -1,5 +1,6 @@
 /.idea
-*.iml
+QualityMindsTest.iml
+RecruitmentTask.iml
 /target
 /.allure
 /allure-report

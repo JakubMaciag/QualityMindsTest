@@ -12,6 +12,8 @@ public class ChromeUtils {
 
     private ChromeOptions prepareChromeOptions(){
         ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setExperimentalOption("useAutomationExtension",false);
+        chromeOptions.setCapability("handlesAlerts",false);
         chromeOptions.setCapability("handlesAlerts",false);
         log.info("Set chrome browser settings");
         return chromeOptions;

@@ -10,6 +10,7 @@ public class SessionObjects {
     private static final ThreadLocal<HashMap<String, Object>> sessionObjects = ThreadLocal.withInitial(HashMap::new);
 
     private static final String BROWSER_NAME = "BROWSER_NAME";
+    private static final String URL="URL";
 
     private static void setObj(String name, Object data) {
         synchronized (sessionObjects) {
@@ -37,12 +38,18 @@ public class SessionObjects {
         setObj(name, value.trim());
     }
 
-    public static void setBrowserName(String breowserName) {
-        setString(BROWSER_NAME, breowserName);
+    public static void setBrowserName(String browserName) {
+        setString(BROWSER_NAME, browserName);
     }
 
     public static String getBrowserName() {
         return getString(BROWSER_NAME);
     }
+    public static void setBasicUrl(String basicUrl) {
+        setString(URL, basicUrl);
+    }
 
+    public static String getBasicUrl() {
+        return getString(URL);
+    }
 }

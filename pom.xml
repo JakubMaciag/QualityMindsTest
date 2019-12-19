@@ -10,19 +10,11 @@
 
     <profiles>
         <profile>
-            <id>chrome</id>
+            <id>default_profile</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <env>chrome</env>
-                <url>https://qualityminds.de/</url>
-            </properties>
-        </profile>
-        <profile>
-            <id>firefox</id>
-            <properties>
-                <env>firefox</env>
                 <url>https://qualityminds.de/</url>
             </properties>
         </profile>
@@ -62,7 +54,6 @@
         <org.apache.maven.plugins.maven_surefire_plugin.version>2.9
         </org.apache.maven.plugins.maven_surefire_plugin.version>
         <aspectj.version>1.8.10</aspectj.version>
-        <suiteXmlFile.directory>src/test/resources/testSuite.xml</suiteXmlFile.directory>
     </properties>
     <dependencies>
         <dependency>
@@ -202,7 +193,17 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <suiteXmlFiles>${suiteXmlFile.directory}</suiteXmlFiles>
+                    <suiteXmlFiles>
+                        <file>src/test/resources/tests/testCase1.xml</file>
+<!--                        <file>src/test/resources/tests/testCase2.xml</file>-->
+<!--                        <file>src/test/resources/tests/testCase3.xml</file>-->
+                    </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>suitethreadpoolsize</name>
+                            <value>3</value>
+                        </property>
+                    </properties>
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import utils.browsers.ChromeUtils;
 import utils.browsers.FirefoxUtils;
 
@@ -17,33 +18,31 @@ class DriverSettings {
         chromeUtils = new ChromeUtils();
     }
 
-    @NonNull
-    private static WebDriver driver;
-    @NonNull
-    private static FirefoxUtils firefoxUtils;
-    @NonNull
-    private static ChromeUtils chromeUtils;
+    private WebDriver driver;
+    private FirefoxUtils firefoxUtils;
+    private ChromeUtils chromeUtils;
 
     @Step("Run browser")
-    static WebDriver runBrowser() {
-        Allure.attachment("Browser: ",SessionObjects.getBrowserName());
+    public WebDriver runBrowser(String browserName) {
+        Allure.attachment("Browser: ", browserName);
         try {
-            if (SessionObjects.getBrowserName().equals("chrome"))
+            if (browserName.equals("chrome"))
                 driver = chromeUtils.setUpChromeDriver();
-            else if (SessionObjects.getBrowserName().equals("firefox"))
+            else if (browserName.trim().equals("firefox"))
                 driver = firefoxUtils.setUpFirefoxDriver();
             driver.manage().window().maximize();
+            driver.manage().deleteAllCookies();
             driver.manage().timeouts().implicitlyWait(TimeOuts.TIME_DRIVER_IMPLICITY_WAIT, TimeUnit.SECONDS);
-            driver.get(SessionObjects.getBasicUrl());
-            log.info("Run webdriver on the page: " + SessionObjects.getBasicUrl());
-        }catch (Exception e){
+            driver.manage().timeouts().pageLoadTimeout(TimeOuts.TIME_DRIVER_PAGELOAD_WAIT,TimeUnit.SECONDS);
+            log.info("Run webdriver");
+        } catch (Exception e) {
             log.error("Error with set up driver");
         }
         return driver;
     }
 
     @Step("Close browser")
-    static void closeBrowser(WebDriver driver) {
+    void closeBrowser(WebDriver driver) {
         driver.quit();
         log.info("Browser is closed.");
     }
