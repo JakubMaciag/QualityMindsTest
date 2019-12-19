@@ -9,7 +9,6 @@ import java.util.HashMap;
 public class SessionObjects {
     private static final ThreadLocal<HashMap<String, Object>> sessionObjects = ThreadLocal.withInitial(HashMap::new);
 
-    private static final String BROWSER_NAME = "BROWSER_NAME";
     private static final String URL="URL";
 
     private static void setObj(String name, Object data) {
@@ -38,13 +37,6 @@ public class SessionObjects {
         setObj(name, value.trim());
     }
 
-    public static void setBrowserName(String browserName) {
-        setString(BROWSER_NAME, browserName);
-    }
-
-    public static String getBrowserName() {
-        return getString(BROWSER_NAME);
-    }
     public static void setBasicUrl(String basicUrl) {
         setString(URL, basicUrl);
     }
