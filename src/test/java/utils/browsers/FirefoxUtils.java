@@ -1,33 +1,38 @@
 package utils.browsers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
 
 @Slf4j
 public class FirefoxUtils {
-    private String DOWNLOAD_DIRECTORY = "src/test/resources/tmp";
-    private FirefoxOptions prepareFirefoxOptions() {
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setCapability("handlesAlerts", false);
+    private String DOWNLOAD_DIRECTORY = System.getProperty("user.dir") + "\\src\\test\\resources\\tmpFirefox";
 
-        firefoxOptions.addPreference("browser.download.dir", DOWNLOAD_DIRECTORY);
-         firefoxOptions.addPreference("browser.download.floderList",2);
-         firefoxOptions.addPreference("browser.helperApps.neverAsk.saveToDisk","application/pdf");
-         firefoxOptions.addPreference("browser.download.useDownloadDir",true);
-         firefoxOptions.addPreference("browser.download.manager.showWhenStarting",false);
-         firefoxOptions.addPreference("browser.download.manager.useWindow", false);
-         firefoxOptions.addPreference("browser.helperApps.alwaysAsk.force",false);
+    private DesiredCapabilities prepareFirefoxOptions() {
+        FirefoxProfile profile = new FirefoxProfile();
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        profile.setPreference("browser.download.folderList", 2);
+        profile.setPreference("handlesAlerts", false);
+        profile.setPreference("browser.download.dir", DOWNLOAD_DIRECTORY);
+        profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/x-pdf,application/octet-stream");
+        profile.setPreference("browser.download.useDownloadDir", true);
+        profile.setPreference("pdfjs.disabled", true);
+        profile.setPreference("browser.download.manager.showWhenStarting", false);
+        profile.setPreference("browser.download.manager.useWindow", false);
+        profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+        capabilities.setCapability(FirefoxDriver.PROFILE,profile);
         log.info("Set firefox browser settings");
-        return firefoxOptions;
+        return capabilities;
     }
 
     public WebDriver setUpFirefoxDriver() {
         WebDriverManager.firefoxdriver().setup();
         log.info("Set up firefox browser driver");
+        // I truly know that is deprecated but FirefoxOptions doesn't work on my stuff.
         return new FirefoxDriver(prepareFirefoxOptions());
     }
 }

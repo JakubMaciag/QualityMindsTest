@@ -22,7 +22,7 @@ public class KontaktLocators extends BasePage {
     @FindBy(xpath = "//span[text()='Office Warschau']")
     protected WebElement labelOfficeWarschau;
 
-    @FindBy(xpath = "//a[@class='mailto-link']")
-    protected WebElement txtSpecifiedEmail;
+    @FindBy(linkText = "hello@qualityminds.de")
+    protected WebElement txtSpecifiedEmail_Hello;
 
 }

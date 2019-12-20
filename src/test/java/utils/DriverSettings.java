@@ -2,10 +2,8 @@ package utils;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import utils.browsers.ChromeUtils;
 import utils.browsers.FirefoxUtils;
 

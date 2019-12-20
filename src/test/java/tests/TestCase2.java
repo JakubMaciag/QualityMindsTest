@@ -4,15 +4,19 @@ import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pageObject.pagesAction.MainPage;
+import utils.AttachUtils;
 import utils.BaseTest;
 
 public class TestCase2 extends BaseTest {
 
     @Test(description = "Open QM main page")
-    @Parameters(value ={"browser"})
-    public void openMainPage(@Optional("chrome") String browser) {
-        System.out.println(browser);
+    public void openMainPage() {
+        driver.get(propertiesUtils.getUrl());
+        new MainPage(driver).verificationMainPageStuff();
+        new AttachUtils(driver).takeScreenShot("Step_1");
     }
+
     @Test(description = "Open Kontakt page", dependsOnMethods = {"openMainPage"})
     public void openKontaktPage() {
         System.out.println("21");

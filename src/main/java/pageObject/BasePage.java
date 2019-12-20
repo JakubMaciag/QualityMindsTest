@@ -1,6 +1,7 @@
 package pageObject;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -108,4 +109,39 @@ public class BasePage{
         }
     }
 
+    protected String gePageHTMLSource(){
+        return driver.getPageSource();
+    }
+
+    protected void waitUntilElementContainsText(WebElement element,String text, int time,boolean assertError){
+        try{
+            WebDriverWait waitTmp = new WebDriverWait(this.driver,time);
+            waitTmp.until(ExpectedConditions.textToBePresentInElement(element,text));
+            log.info("Element contains text");
+        }catch (Exception e){
+            log.error("Element does not contain text");
+            if(assertError)
+                Assert.fail("Element was not found / not contain text");
+        }
+    }
+
+    protected void moveToElementActions(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).build().perform();
+        log.info("Move to element: "+element.toString());
+    }
+
+    protected void moveToElementAndClickActions(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).build().perform();
+        actions.click(element).build().perform();
+        log.info("Move to and click element: "+element.toString());
+    }
+
+    protected void moveToElementAndFillTextActions(WebElement element,String text){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).build().perform();
+        actions.click(element).sendKeys(element,text).build().perform();
+        log.info(" Move to, click and fill with text element: "+element.toString());
+    }
 }

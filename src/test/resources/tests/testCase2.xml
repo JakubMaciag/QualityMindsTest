@@ -2,18 +2,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Tasks - QM recritment" parallel="true" >
     <test name="Task 1 - firefox" group-by-instances="true">
-        <parameter name="browserName" value="firefox"></parameter>
-        <classes>
-            <class name="tests.TestCase1">
-                <methods>
-                    <include name="openMainPage">Opening QM main page</include>
-                    <include name="openKontaktPage">Opening Kontakt page</include>
-                    <include name="verificationOfEmailExistance">Email verification</include>
-                    <include name="returnToMainPage">Return to main page</include>
-                    <include name="openKontaktPageAgain">Opening Kontakt page again</include>
-                    <include name="verificationOfKontaktPageContent">Verifing content of Kontakt page</include>
-                </methods>
-            </class>
-        </classes>
+<!--        <parameter name="browserName" value="firefox"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="tests.TestCase1">-->
+<!--                <methods>-->
+<!--                    <include name="openMainPage">Opening QM main page</include>-->
+<!--                    <include name="openKontaktPage">Opening Kontakt page</include>-->
+<!--                    <include name="verificationOfEmailExistance">Email verification</include>-->
+<!--                    <include name="returnToMainPage">Return to main page</include>-->
+<!--                    <include name="openKontaktPageAgain">Opening Kontakt page again</include>-->
+<!--                    <include name="verificationOfKontaktPageContent">Verifing content of Kontakt page</include>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
     </test>
 </suite>

@@ -1,7 +1,11 @@
 package utils;
 
 import com.jayway.restassured.response.Response;
+import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.WebDriver;
+
+
 import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
@@ -18,5 +22,11 @@ public class RestUtils {
         return response.statusCode();
     }
 
-//    public boolean isPageStatus200
+    public boolean isPageStatus200(WebDriver driver){
+         Allure.addAttachment("Current page",driver.getCurrentUrl());
+         if (returnHTTPStatus(driver.getCurrentUrl())==200)
+             return true;
+         else
+             return false;
+    }
 }

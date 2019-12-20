@@ -23,16 +23,16 @@ public class BaseTest {
 
     @BeforeTest()
     @Parameters(value = {"browserName"})
-    public void beforeSuite(String browserName) {
+    public void setUp(String browserName) {
         propertiesUtils = new PropertiesUtils();
         driver = driverSettings.runBrowser(browserName);
         log.info("Beginning of suite");
     }
 
     @AfterTest
-    public void afterSuite() {
+    public void tearDown() {
         driverSettings.closeBrowser(driver);
-        log.info("End of suite");
+        log.info("End of test");
     }
 
     @AfterMethod(alwaysRun = true)

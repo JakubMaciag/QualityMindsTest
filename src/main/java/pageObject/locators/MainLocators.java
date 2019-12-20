@@ -19,6 +19,12 @@ public class MainLocators extends BasePage {
     })
     protected List<WebElement> btnKontaktList;
 
+    @FindBy(xpath = "//ul[@id='menu-footer-menu']//a[@href='https://qualityminds.de/kontakt/']")
+    protected WebElement btnKontaktAndAnfahrtFooterMenu;
+
     @FindBy(css = "#logo")
     protected WebElement imgLogo;
+
+    @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/']/..")
+    protected WebElement btnHome;
 }

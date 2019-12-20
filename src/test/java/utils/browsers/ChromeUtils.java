@@ -6,15 +6,29 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 public class ChromeUtils {
-
+    private String DOWNLOAD_DIRECTORY = System.getProperty("user.dir")+"\\src\\test\\resources\\tmpChrome";
     private ChromeOptions prepareChromeOptions(){
+        System.out.println(DOWNLOAD_DIRECTORY);
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setExperimentalOption("useAutomationExtension",false);
-        chromeOptions.setCapability("handlesAlerts",false);
-        chromeOptions.setCapability("handlesAlerts",false);
+        Map<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("profile.default_content_settings.popups", 0);
+        chromePrefs.put("download.default_directory", DOWNLOAD_DIRECTORY);
+        chromePrefs.put("download.prompt_for_download", false);
+        chromePrefs.put("plugins.plugins_disabled", "Chrome PDF Viewer");
+        chromePrefs.put("useAutomationExtension",false);
+        chromeOptions.addArguments("--test-type");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--disable-software-rasterizer");
+        chromeOptions.addArguments("--disable-popup-blocking");
+        chromeOptions.addArguments("--disable-extensions");
+        chromeOptions.setExperimentalOption("prefs", chromePrefs);
         log.info("Set chrome browser settings");
         return chromeOptions;
     }
