@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,6 @@ import java.util.Map;
 public class ChromeUtils {
     private String DOWNLOAD_DIRECTORY = System.getProperty("user.dir")+"\\src\\test\\resources\\tmpChrome";
     private ChromeOptions prepareChromeOptions(){
-        System.out.println(DOWNLOAD_DIRECTORY);
         ChromeOptions chromeOptions = new ChromeOptions();
         Map<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);

@@ -45,8 +45,6 @@
         <com.jayway.restassured.rest_assured.version>2.9.0</com.jayway.restassured.rest_assured.version>
         <com.aventstack.extentreports.version>4.0.9</com.aventstack.extentreports.version>
         <io.github.bobonigarcia.webdrivermanager.version>3.7.0</io.github.bobonigarcia.webdrivermanager.version>
-        <kg.apc.jmeter-plugins-cmd.version>2.2</kg.apc.jmeter-plugins-cmd.version>
-        <!--build-->
         <resources.directory>src/main/resources</resources.directory>
         <test.resources.directory>src/test/resources</test.resources.directory>
         <maven_compiler_plugin.version>3.3</maven_compiler_plugin.version>
@@ -56,13 +54,6 @@
         <aspectj.version>1.8.10</aspectj.version>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/kg.apc/jmeter-plugins-cmd -->
-        <dependency>
-            <groupId>kg.apc</groupId>
-            <artifactId>jmeter-plugins-cmd</artifactId>
-            <version>${kg.apc.jmeter-plugins-cmd.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -201,8 +192,8 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <file>src/test/resources/tests/testCase1.xml</file>
-<!--                        <file>src/test/resources/tests/testCase2.xml</file>-->
+<!--                        <file>src/test/resources/tests/testCase1.xml</file>-->
+                        <file>src/test/resources/tests/testCase2.xml</file>
 <!--                        <file>src/test/resources/tests/testCase3.xml</file>-->
                     </suiteXmlFiles>
                     <properties>

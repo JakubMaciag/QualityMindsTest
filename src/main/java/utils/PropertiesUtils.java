@@ -29,7 +29,6 @@ public class PropertiesUtils {
     private void loadSettingsDataFromProperties() {
         Properties properties = getPropertiesFromFile();
         url =properties.getProperty(URL);
-        SessionObjects.setBasicUrl(url);
         log.info("Properties variable assignment");
     }
 

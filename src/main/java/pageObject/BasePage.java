@@ -144,4 +144,22 @@ public class BasePage{
         actions.click(element).sendKeys(element,text).build().perform();
         log.info(" Move to, click and fill with text element: "+element.toString());
     }
+
+    //todo
+    protected void WaitUntilAttributeValueEquals(WebElement element, String attributeName, String attributeValue, int time)
+    {
+        try {
+            WebDriverWait waitTmp = new WebDriverWait(this.driver, time);
+//        waitTmp.Until<IWebElement>((d) =>
+//            {
+//        if (webElement.GetAttribute(attributeName) == attributeValue)
+//        {
+//            return webElement;
+//        }
+        }catch (Exception e){
+
+        }
+//        return null;
+//                });
+    }
 }

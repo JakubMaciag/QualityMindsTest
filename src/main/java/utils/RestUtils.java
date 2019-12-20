@@ -10,23 +10,26 @@ import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
 public class RestUtils {
-    private String toString(int status){return String.valueOf(status);}
-    private int returnHTTPStatus(String baseUrl){
+    private String toString(int status) {
+        return String.valueOf(status);
+    }
+
+    private int returnHTTPStatus(String baseUrl) {
         Response response = given()
                 .relaxedHTTPSValidation()
                 .request()
                 .baseUri(baseUrl)
                 .content("application/soap+xml; charset=UFT-8;")
                 .get();
-        log.info("HTTP ststus of:"+baseUrl+" is "+response.statusCode());
+        log.info("HTTP ststus of:" + baseUrl + " is " + response.statusCode());
         return response.statusCode();
     }
 
-    public boolean isPageStatus200(WebDriver driver){
-         Allure.addAttachment("Current page",driver.getCurrentUrl());
-         if (returnHTTPStatus(driver.getCurrentUrl())==200)
-             return true;
-         else
-             return false;
+    public boolean isPageStatus200(WebDriver driver) {
+        Allure.addAttachment("Current page", driver.getCurrentUrl());
+        if (returnHTTPStatus(driver.getCurrentUrl()) == 200)
+            return true;
+        else
+            return false;
     }
 }

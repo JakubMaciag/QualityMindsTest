@@ -20,6 +20,8 @@ public class FirefoxUtils {
         profile.setPreference("browser.download.dir", DOWNLOAD_DIRECTORY);
         profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/x-pdf,application/octet-stream");
         profile.setPreference("browser.download.useDownloadDir", true);
+        profile.setAcceptUntrustedCertificates(true);
+        profile.setAssumeUntrustedCertificateIssuer(false);
         profile.setPreference("pdfjs.disabled", true);
         profile.setPreference("browser.download.manager.showWhenStarting", false);
         profile.setPreference("browser.download.manager.useWindow", false);
