@@ -6,7 +6,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.testng.Assert;
 import pageObject.JSCommands;
 import pageObject.locators.KontaktLocators;
@@ -22,7 +21,8 @@ public class KontaktPage extends KontaktLocators {
     @NonNull
     @Getter(AccessLevel.PUBLIC)
     private String sourceCode = null;
-private String link = "https://qualityminds.de/kontakt/";
+    private String link = "https://qualityminds.de/kontakt/";
+
     public KontaktPage(WebDriver driver) {
         super(driver);
     }

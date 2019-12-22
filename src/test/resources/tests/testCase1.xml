@@ -8,7 +8,7 @@
                 <methods>
                     <include name="openMainPage">Opening QM main page</include>
                     <include name="openKontaktPage">Opening Kontakt page</include>
-                    <include name="verificationOfEmailExistance">Email verification</include>
+                    <include name="verificationOfEmailExistence">Email verification</include>
                     <include name="returnToMainPage">Return to main page</include>
                     <include name="openKontaktPageAgain">Opening Kontakt page again</include>
                     <include name="verificationOfKontaktPageContent">Verifing content of Kontakt page</include>
@@ -23,7 +23,7 @@
                 <methods>
                     <include name="openMainPage">Opening QM main page</include>
                     <include name="openKontaktPage">Opening Kontakt page</include>
-                    <include name="verificationOfEmailExistance">Email verification</include>
+                    <include name="verificationOfEmailExistence">Email verification</include>
                     <include name="returnToMainPage">Return to main page</include>
                     <include name="openKontaktPageAgain">Opening Kontakt page again</include>
                     <include name="verificationOfKontaktPageContent">Verifing content of Kontakt page</include>

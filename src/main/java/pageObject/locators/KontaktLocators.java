@@ -13,15 +13,6 @@ public class KontaktLocators extends BasePage {
     @FindBy(xpath = "//span[text()='Kontakt & Anfahrt']")
     protected WebElement labelKontaktAndAnfahrt;
 
-    @FindBy(xpath = "//span[text()='Office Nürnberg']")
-    protected WebElement labelOfficeNurnberg;
-
-    @FindBy(xpath = "//span[text()='Office München']")
-    protected WebElement labelOfficeMunchen;
-
-    @FindBy(xpath = "//span[text()='Office Warschau']")
-    protected WebElement labelOfficeWarschau;
-
     @FindBy(linkText = "hello@qualityminds.de")
     protected WebElement txtSpecifiedEmail_Hello;
 

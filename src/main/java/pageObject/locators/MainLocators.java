@@ -20,24 +20,18 @@ public class MainLocators extends BasePage {
     })
     protected List<WebElement> btnKontaktList;
 
-    @FindAll({
-            @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/team-overview/']/..//ul"),
-            @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/team-overview/']/..//li/a")
-    })
-    protected List<WebElement> subMenuPortfolioList;
-
-    @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/team-overview/']")
-    protected WebElement btnPortfolio;
-
-    @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/team_page/wam-testing/']")
-    protected WebElement btnWebAutomationAndMobileInSubMenu;
-
     @FindBy(xpath = "//ul[@id='menu-footer-menu']//a[@href='https://qualityminds.de/kontakt/']")
     protected WebElement btnKontaktAndAnfahrtFooterMenu;
 
     @FindBy(css = "#logo")
     protected WebElement imgLogo;
 
-    @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/']/..")
+    @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/']")
     protected WebElement btnHome;
+
+    @FindBy(xpath = "//ul[@id='top-menu']//a[@href='https://qualityminds.de/']/..")
+    protected WebElement btnHomeBackground;
+
+    @FindBy(css = ".cc-allow")
+    protected WebElement btnAcceptCookies;
 }

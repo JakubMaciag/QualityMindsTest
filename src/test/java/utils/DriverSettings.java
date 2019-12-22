@@ -11,27 +11,28 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 class DriverSettings {
-    public DriverSettings() {
-        firefoxUtils = new FirefoxUtils();
-        chromeUtils = new ChromeUtils();
-    }
-
+    private PropertiesUtils propertiesUtils;
     private WebDriver driver;
     private FirefoxUtils firefoxUtils;
     private ChromeUtils chromeUtils;
+    public DriverSettings(PropertiesUtils propertiesUtils) {
+        this.propertiesUtils = propertiesUtils;
+        firefoxUtils = new FirefoxUtils();
+        chromeUtils = new ChromeUtils();
+    }
 
     @Step("Run browser")
     public WebDriver runBrowser(String browserName) {
         Allure.attachment("Browser: ", browserName);
         try {
             if (browserName.equals("chrome"))
-                driver = chromeUtils.setUpChromeDriver();
+                driver = chromeUtils.setUpChromeDriver(propertiesUtils.getDownloadDirecotryForChrome());
             else if (browserName.trim().equals("firefox"))
-                driver = firefoxUtils.setUpFirefoxDriver();
+                driver = firefoxUtils.setUpFirefoxDriver(propertiesUtils.getDownloadDirecotryForFirefox());
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
             driver.manage().timeouts().implicitlyWait(TimeOuts.TIME_DRIVER_IMPLICITY_WAIT, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(TimeOuts.TIME_DRIVER_PAGELOAD_WAIT,TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(TimeOuts.TIME_DRIVER_PAGELOAD_WAIT, TimeUnit.SECONDS);
             log.info("Run webdriver");
         } catch (Exception e) {
             log.error("Error with set up driver");

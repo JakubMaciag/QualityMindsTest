@@ -30,13 +30,13 @@ public class TestCase1 extends BaseTest {
         new AttachUtils(driver).takeScreenShot("Step_2");
     }
 
-    @Test(description = "Verify email existance", dependsOnMethods = {"openKontaktPage"})
-    public void verificationOfEmailExistance() {
+    @Test(description = "Verify email existence", dependsOnMethods = {"openKontaktPage"})
+    public void verificationOfEmailExistence() {
         new KontaktPage(driver).verifyIfHelloEmailIsVisible();
         new AttachUtils(driver).takeScreenShot("Step_3");
     }
 
-    @Test(description = "Return to QM main page", dependsOnMethods = {"verificationOfEmailExistance"})
+    @Test(description = "Return to QM main page", dependsOnMethods = {"verificationOfEmailExistence"})
     public void returnToMainPage() {
         driver.navigate().back();
         new MainPage(driver).verificationMainPageStuff(propertiesUtils.getUrl());

@@ -27,7 +27,8 @@ public class RestUtils {
 
     public boolean isPageStatus200(WebDriver driver) {
         Allure.addAttachment("Current page", driver.getCurrentUrl());
-        if (returnHTTPStatus(driver.getCurrentUrl()) == 200)
+        int status = returnHTTPStatus(driver.getCurrentUrl());
+        if (status == 200)
             return true;
         else
             return false;

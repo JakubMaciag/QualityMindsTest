@@ -1,7 +1,5 @@
 package pageObject.pagesAction;
 
-import jdk.javadoc.internal.doclets.toolkit.util.JavaScriptScanner;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import pageObject.locators.MainLocators;
 import io.qameta.allure.Step;
@@ -12,16 +10,24 @@ import utils.TimeOuts;
 
 @Slf4j
 public class MainPage extends MainLocators {
-private String linkWebAutomationMobileTesting = "https://qualityminds.de/team_page/wam-testing/";
-private String greenHighlighted="rgba(130, 186, 69, 1)";
+
+    private String greenHighlighted = "(130, 186, 69";
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
     @Step("Verification if logo is displayed")
-    public MainPage verifyLogo() {
-        waitUntilElementIsVisible(imgLogo, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, true);
+    public MainPage verifyLogo(boolean assertError) {
+        waitUntilElementIsVisible(imgLogo, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         log.info("Logo is displayed");
+        return this;
+    }
+
+    @Step("Verification if Cookies message exists")
+    public MainPage verifyBtnAcceptCookies(boolean assertError) {
+        waitUntilElementIsVisible(btnAcceptCookies, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
+        log.info("Accept Cookies button is displayed");
         return this;
     }
 
@@ -36,7 +42,7 @@ private String greenHighlighted="rgba(130, 186, 69, 1)";
     public MainPage clickBtnKontakt() {
         waitUntilElementIsClickable(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
         clickWebElement(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, true);
-        log.info("Click button Kontakt");
+        log.info("Clicked button Kontakt");
         return this;
     }
 
@@ -45,55 +51,22 @@ private String greenHighlighted="rgba(130, 186, 69, 1)";
         jsCommands.jsScrollDown();
         waitUntilElementIsClickable(btnKontaktAndAnfahrtFooterMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
         clickWebElement(btnKontaktAndAnfahrtFooterMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, true);
-        log.info("Click button KONTAKT & ANFAHRT");
+        log.info("Clicked button KONTAKT & ANFAHRT");
         return this;
     }
 
     @Step("Verification if Home button is displayed and highlighted")
-    public MainPage verifyHomeButton() {
-        waitUntilElementIsClickable(btnHome, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, true);
-//        Assert.assertTrue(btnHome.getCssValue("color").equals(greenHighlighted));
-        Assert.assertTrue(btnHome.getAttribute("class").contains("current-menu-item"));
+    public MainPage verifyHomeButton(boolean assertError) {
+        waitUntilElementIsClickable(btnHome, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
+        waitUntilCSSValueContains(btnHome, "color", greenHighlighted, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
+        waitUntilAttributeContains(btnHomeBackground, "class", "current-menu-item", TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         log.info("Home button is highlighted");
         return this;
     }
 
     @Step("Verification HTTP status of main page")
     public MainPage verifyHTTPStatusAndJSComplete() {
-        Assert.assertTrue(restUtils.isPageStatus200(driver));
-        jsCommands.jsVerifyPageState();
-        return this;
-    }
-
-    @Step("Focus on Portfolio button")
-    public MainPage focusOnPortfolioButton(){
-        jsCommands.jsScrollUp();
-        waitUntilElementIsClickable(btnPortfolio,TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL,true);
-        moveToElementActions(btnPortfolio);
-        return this;
-    }
-
-    @Step("Verify existance of sub menu under Portfolio")
-    public MainPage verifySubMenuUnderPortfolio(){
-        for (WebElement element : subMenuPortfolioList) {
-            waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
-        }
-        return this;
-    }
-
-    @Step("Go to page Web, Automation & Mobile Testing by sub menu button")
-        public MainPage goToWebAutomationAndMobileWebPage(){
-        moveToElementActions(btnWebAutomationAndMobileInSubMenu);
-        clickWebElement(btnWebAutomationAndMobileInSubMenu,TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL,true,true);
-        log.info("Go to page Web, Automation & Mobile Testing by sub menu button");
-        return this;
-    }
-
-    @Step("Verification if Portfolio button is displayed and highlighted")
-    public MainPage verifyPortfolioButton() {
-        waitUntilElementIsClickable(btnPortfolio, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, true);
-        Assert.assertTrue(btnPortfolio.getCssValue("color").equals(greenHighlighted));
-        log.info("Portfolio button is highlighted");
+        verifyIfPageIsLoaded();
         return this;
     }
 
@@ -101,18 +74,12 @@ private String greenHighlighted="rgba(130, 186, 69, 1)";
     public MainPage verificationMainPageStuff(String basicUrl) {
         return this.verifyIfURLisCorrect(basicUrl)
                 .verifyHTTPStatusAndJSComplete()
-                .verifyLogo()
-                .verifyHomeButton();
+                .verifyLogo(true)
+                .verifyBtnAcceptCookies(true)
+                .verifyHomeButton(true);
     }
 
-    public MainPage verifyExistanceOfSubMenuUnderPortfolioButton(){
-        return this.focusOnPortfolioButton()
-                .verifySubMenuUnderPortfolio();
-    }
 
-    public MainPage goToWebAutomationAndMobileWebPageAndVerifyPage(){
-        return this.goToWebAutomationAndMobileWebPage()
-                .verifyIfURLisCorrect(linkWebAutomationMobileTesting)
-                .verifyHTTPStatusAndJSComplete();
-    }
+
+
 }

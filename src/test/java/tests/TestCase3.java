@@ -17,11 +17,11 @@ public class TestCase3 extends BaseTest {
     public void openKontaktPage() {
         System.out.println("22");
     }
-    @Test(description = "Verify email existance", dependsOnMethods = {"openKontaktPage"})
-    public void verificationOfEmailExistance() {
+    @Test(description = "Verify email existence", dependsOnMethods = {"openKontaktPage"})
+    public void verificationOfEmailExistence() {
         System.out.println("32");
     }
-    @Test(description = "Return to QM main page", dependsOnMethods = {"verificationOfEmailExistance"})
+    @Test(description = "Return to QM main page", dependsOnMethods = {"verificationOfEmailExistence"})
     public void returnToMainPage() {
         System.out.println("42");
     }

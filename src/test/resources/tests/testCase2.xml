@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Tasks - QM recritment" parallel="true" >
+<suite name="Tasks - QM recritment" parallel="tests" thread-count="2">
     <test name="Task 2 - chrome" group-by-instances="true">
         <parameter name="browserName" value="chrome"></parameter>
         <classes>
@@ -8,8 +8,19 @@
                 <methods>
                     <include name="openMainPage">Opening QM main page</include>
                     <include name="hoverOnPortfolioAndVerifySubMenu">Hover on Portfolio and verify sub menu</include>
-                    <include name="goToPageWebAutomationAndMobileTesting">Go to page Web, Automotion and Mobile Testing</include>
+                    <include name="goToPageWebAutomationAndMobileTesting">Go to page Web, Automotion and Mobile
+                        Testing
+                    </include>
                     <include name="verifyPortfolioButton">Verification if Portfolio button is highlighted</include>
+                    <include name="verifyMobileSectionAndFlyreButton">Verification if Mobile section and Flyer button
+                        are displayed
+                    </include>
+                    <include name="verifyFlyerButtonContainsLink">Verification if Flyer button contains specified link
+                        to file
+                    </include>
+                    <include name="verifyIfFileIsAvailableViaDownloadedLink">Verification if file is available via
+                        download link
+                    </include>
                 </methods>
             </class>
         </classes>
@@ -21,8 +32,19 @@
                 <methods>
                     <include name="openMainPage">Opening QM main page</include>
                     <include name="hoverOnPortfolioAndVerifySubMenu">Hover on Portfolio and verify sub menu</include>
-                    <include name="goToPageWebAutomationAndMobileTesting">Go to page Web, Automotion and Mobile Testing</include>
+                    <include name="goToPageWebAutomationAndMobileTesting">Go to page Web, Automotion and Mobile
+                        Testing
+                    </include>
                     <include name="verifyPortfolioButton">Verification if Portfolio button is highlighted</include>
+                    <include name="verifyMobileSectionAndFlyreButton">Verification if Mobile section and Flyer button
+                        are displayed
+                    </include>
+                    <include name="verifyFlyerButtonContainsLink">Verification if Flyer button contains specified link
+                        to file
+                    </include>
+                    <include name="verifyIfFileIsAvailableViaDownloadedLink">Verification if file is available via
+                        download link
+                    </include>
                 </methods>
             </class>
         </classes>
