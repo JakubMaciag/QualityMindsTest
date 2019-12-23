@@ -14,8 +14,8 @@ import utils.TimeOuts;
 public class PortfolioPage extends PortfolioLocators {
     private String linkWebAutomationMobileTesting = "https://qualityminds.de/team_page/wam-testing/";
     private String linkFlyerDownload = "https://qualityminds.de/app/uploads/2018/11/Find-The-Mobile-Bug-Session.pdf";
-    private String greenHighlighted = "(130, 186, 69";
-    private String greyHighlighted = "(151, 151, 151";
+    private String greenHighlighted = "130, 186, 69";
+    private String greyHighlighted = "151, 151, 151";
     private String downloadedFileNameFlyer = "FLYER FIND THE BUG SESSION";
     private int offset = 200;
 
