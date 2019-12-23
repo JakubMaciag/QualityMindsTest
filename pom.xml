@@ -193,13 +193,13 @@
                     </argLine>
                     <suiteXmlFiles>
                         <file>src/test/resources/tests/testCase1.xml</file>
-                        <file>src/test/resources/tests/testCase2.xml</file>
-                        <file>src/test/resources/tests/testCase3.xml</file>
+<!--                        <file>src/test/resources/tests/testCase2.xml</file>-->
+<!--                        <file>src/test/resources/tests/testCase3.xml</file>-->
                     </suiteXmlFiles>
                     <properties>
                         <property>
                             <name>suitethreadpoolsize</name>
-                            <value>2</value>
+                            <value>1</value>
                         </property>
                     </properties>
                 </configuration>

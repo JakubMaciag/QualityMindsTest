@@ -151,7 +151,8 @@ public class BasePage {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOf(element));
             return false;
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
+            Assert.assertTrue(true);
             return true;
         }
     }

@@ -42,7 +42,8 @@ class DriverSettings {
 
     @Step("Close browser")
     void closeBrowser(WebDriver driver) {
-        driver.quit();
+        driver.close();
+//        driver.quit();
         log.info("Browser is closed.");
     }
 }

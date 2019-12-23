@@ -13,7 +13,7 @@ public class TestCase3 extends BaseTest {
     @Test(description = "Open QM main page")
     public void openMainPage() {
         driver.get(propertiesUtils.getUrl());
-        new MainPage(driver).verificationMainPageStuff(propertiesUtils.getUrl());
+        new MainPage(driver).verificationMainPageStuff(propertiesUtils.getUrl(),assertError);
         new AttachUtils(driver).takeScreenShot("Step_1");
     }
 

@@ -28,9 +28,9 @@ public class ContactPage extends ContactLocators {
     }
 
     @Step("Click Kontakt button")
-    public ContactPage clickBtnKontakt() {
-        waitUntilElementIsClickable(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
-        clickWebElement(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, true);
+    public ContactPage clickBtnKontakt(boolean assertError) {
+        waitUntilElementIsClickable(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
+        clickWebElement(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, assertError);
         log.info("Clicked button Kontakt");
         return this;
     }
@@ -44,8 +44,8 @@ public class ContactPage extends ContactLocators {
     }
 
     @Step("Verification if Kontrakt & Anfahrt sign is displayed")
-    public ContactPage verifyIfKontaktAndAnfahrtIsDisplayed() {
-        waitUntilElementIsVisible(labelKontaktAndAnfahrt, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
+    public ContactPage verifyIfKontaktAndAnfahrtIsDisplayed(boolean assertError) {
+        waitUntilElementIsVisible(labelKontaktAndAnfahrt, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         log.info("Sign Kontakt & Anfahrt is displayed");
         return this;
     }
@@ -57,17 +57,17 @@ public class ContactPage extends ContactLocators {
     }
 
     @Step("Verification if specified email is visible")
-    public ContactPage verifyIfHelloEmailIsVisible() {
+    public ContactPage verifyIfHelloEmailIsVisible(boolean assertError) {
         jsCommands.jsScrollToElement(txtSpecifiedEmail_Hello);
-        waitUntilElementContainsText(txtSpecifiedEmail_Hello, "hello@qualityminds.de", TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
+        waitUntilElementContainsText(txtSpecifiedEmail_Hello, "hello@qualityminds.de", TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         Allure.attachment("Email", "hello@qualityminds.de");
         log.info("Verify if hello@qualityminds.de is visible");
         return this;
     }
 
-    public List<String> verifyKontaktPageAndGetSourceCode() {
+    public List<String> verifyKontaktPageAndGetSourceCode(boolean  assertError) {
         this.verifyLoadingKontaktPage()
-                .verifyIfKontaktAndAnfahrtIsDisplayed()
+                .verifyIfKontaktAndAnfahrtIsDisplayed(assertError)
                 .saveKontaktPageSource();
         return Arrays.asList(link, driver.getCurrentUrl(), this.getSourceCode());
     }

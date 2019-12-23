@@ -45,17 +45,17 @@ public class PortfolioPage extends PortfolioLocators {
 
 
     @Step("Go to page Web, Automation & Mobile Testing by sub menu button")
-    public PortfolioPage goToWebAutomationAndMobileWebPage() {
+    public PortfolioPage goToWebAutomationAndMobileWebPage(boolean assertError) {
         moveToElementActions(btnWebAutomationAndMobileInSubMenu);
-        clickWebElement(btnWebAutomationAndMobileInSubMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, true);
+        clickWebElement(btnWebAutomationAndMobileInSubMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, assertError);
         log.info("Go to page Web, Automation & Mobile Testing by sub menu button");
         return this;
     }
 
     @Step("Focus on Portfolio button")
-    public PortfolioPage focusOnPortfolioButton() {
+    public PortfolioPage focusOnPortfolioButton(boolean assertError) {
         jsCommands.jsScrollUp();
-        waitUntilElementIsClickable(btnPortfolio, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
+        waitUntilElementIsClickable(btnPortfolio, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         moveToElementActions(btnPortfolio);
         log.info("Focused on portfolio button");
         return this;
@@ -63,26 +63,26 @@ public class PortfolioPage extends PortfolioLocators {
 
     @Step("Verification if Portfolio button is displayed and highlighted")
     public PortfolioPage verifyPortfolioButton(boolean assertError) {
-        waitUntilElementIsClickable(btnPortfolio, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, true);
+        waitUntilElementIsClickable(btnPortfolio, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         waitUntilCSSValueContains(btnPortfolio, "color", greenHighlighted, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         log.info("Portfolio button is highlighted");
         return this;
     }
 
     @Step("Verification of existence of sub menu under Portfolio")
-    public PortfolioPage verifySubMenuUnderPortfolio() {
+    public PortfolioPage verifySubMenuUnderPortfolio(boolean assertError) {
         for (WebElement element : subMenuPortfolioList) {
-            waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
+            waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
             log.info("Exist: " + element.toString());
         }
         return this;
     }
 
     @Step("Move and click Mobile button")
-    public PortfolioPage clickMobileContentButton(boolean asserError) {
-        waitUntilElementIsVisible(btnMobileContent, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, true);
+    public PortfolioPage clickMobileContentButton(boolean assertError) {
+        waitUntilElementIsVisible(btnMobileContent, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         jsCommands.jsScrollToPoint(btnMobileContent.getLocation().getX(), btnMobileContent.getLocation().getY() - offset);
-        clickWebElement(btnMobileContent, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, asserError);
+        clickWebElement(btnMobileContent, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, assertError);
         log.info("Clicked mobile content button");
         return this;
     }
@@ -97,14 +97,14 @@ public class PortfolioPage extends PortfolioLocators {
 
     @Step("Verification if Mobile content text exists")
     public PortfolioPage verifyIfMobileContentTextExists(boolean assertError) {
-        waitUntilElementIsVisible(textMobileContent, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
+        waitUntilElementIsVisible(textMobileContent, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         log.info("Mobile content text exists");
         return this;
     }
 
     @Step("Verification if Flyer button is displayed on the right side of mobile content")
     public PortfolioPage verifyIfFlyerButtonIsDisplayedOnRight(boolean assertError) {
-        waitUntilElementIsClickable(btnFlyer, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
+        waitUntilElementIsClickable(btnFlyer, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         int locationParameter = btnFlyer.getLocation().getX() - textMobileContent.getLocation().getX();
         Assert.assertTrue(locationParameter > 0);
         log.info("Flyer button is displayed on the right side of content");
@@ -127,14 +127,14 @@ public class PortfolioPage extends PortfolioLocators {
     }
 
     @Step("Verification if file can be downloaded")
-    public PortfolioPage verifyIfFileCanBeDownloaded(String path, String brwoser) {
+    public PortfolioPage verifyIfFileCanBeDownloaded(String path, String brwoser,boolean assertError) {
         if (brwoser.equals("chrome"))
             path = path + "\\" + downloadedFileNameFlyer + ".pdf";
         else if (brwoser.equals("firefox"))
             path = path + "\\" + downloadedFileNameFlyer;
         else
             path = null;
-        new AttachUtils(driver).verifyIfFileExist(path, true);
+        new AttachUtils(driver).verifyIfFileExist(path, assertError);
         log.info("File exist:" +path);
         Allure.attachment("File exist ", path);
         return this;
@@ -145,29 +145,29 @@ public class PortfolioPage extends PortfolioLocators {
         return this;
     }
 
-    public PortfolioPage verifyExistenceOfSubMenuUnderPortfolioButton() {
-        return this.focusOnPortfolioButton()
-                .verifySubMenuUnderPortfolio();
+    public PortfolioPage verifyExistenceOfSubMenuUnderPortfolioButton(boolean assertError) {
+        return this.focusOnPortfolioButton(assertError)
+                .verifySubMenuUnderPortfolio(assertError);
     }
 
-    public PortfolioPage goToWebAutomationAndMobileWebPageAndVerifyPage() {
-        return this.goToWebAutomationAndMobileWebPage()
+    public PortfolioPage goToWebAutomationAndMobileWebPageAndVerifyPage(boolean assertError) {
+        return this.goToWebAutomationAndMobileWebPage(assertError)
                 .verifyIfURLisCorrect()
                 .verifyHTTPStatusAndJSComplete();
     }
 
-    public PortfolioPage verifyMobileContentAndFlyerButton() {
-        return this.verifyIfLabelWebAutomationAndMobileTestingExists(true)
-                .clickMobileContentButton(true)
-                .verifyIfMobileContentButtonIsHighlighted(true)
-                .verifyIfMobileContentTextExists(true)
-                .verifyIfFlyerButtonIsDisplayedOnRight(true);
+    public PortfolioPage verifyMobileContentAndFlyerButton(boolean assertError) {
+        return this.verifyIfLabelWebAutomationAndMobileTestingExists(assertError)
+                .clickMobileContentButton(assertError)
+                .verifyIfMobileContentButtonIsHighlighted(assertError)
+                .verifyIfMobileContentTextExists(assertError)
+                .verifyIfFlyerButtonIsDisplayedOnRight(assertError);
     }
 
-    public PortfolioPage verifyIfFileIsAvailableViaLink(String path, String browser) {
+    public PortfolioPage verifyIfFileIsAvailableViaLink(String path, String browser,boolean assertError) {
         return this.clearDownloadDirectory(path)
-                .clickFlyerButton(true)
-                .verifyIfFileCanBeDownloaded(path, browser)
+                .clickFlyerButton(assertError)
+                .verifyIfFileCanBeDownloaded(path, browser,assertError)
                 .clearDownloadDirectory(path);
     }
 }

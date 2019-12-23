@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Tasks - QM recritment" parallel="tests" thread-count="2">
+<suite name="Tasks - QM recruitment 2" parallel="tests" thread-count="2">
     <test name="Task 2 - chrome" group-by-instances="true">
         <parameter name="browserName" value="chrome"></parameter>
         <classes>

@@ -38,10 +38,10 @@ public class MainPage extends MainLocators {
     }
 
     @Step("Click KONTAKT & ANFAHRT button in footer menu")
-    public MainPage clickBtnKontaktAndAnfahrt() {
+    public MainPage clickBtnKontaktAndAnfahrt(boolean assertError) {
         jsCommands.jsScrollDown();
-        waitUntilElementIsClickable(btnKontaktAndAnfahrtFooterMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
-        clickWebElement(btnKontaktAndAnfahrtFooterMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, true);
+        waitUntilElementIsClickable(btnKontaktAndAnfahrtFooterMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
+        clickWebElement(btnKontaktAndAnfahrtFooterMenu, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, assertError);
         log.info("Clicked button KONTAKT & ANFAHRT");
         return this;
     }
@@ -61,12 +61,12 @@ public class MainPage extends MainLocators {
         return this;
     }
 
-    public MainPage verificationMainPageStuff(String basicUrl) {
+    public MainPage verificationMainPageStuff(String basicUrl,boolean assertError) {
         return this.verifyIfURLisCorrect(basicUrl)
                 .verifyHTTPStatusAndJSComplete()
-                .verifyLogo(true)
-                .verifyBtnAcceptCookies(true)
-                .verifyHomeButton(true);
+                .verifyLogo(assertError)
+                .verifyBtnAcceptCookies(assertError)
+                .verifyHomeButton(assertError);
     }
 
 
