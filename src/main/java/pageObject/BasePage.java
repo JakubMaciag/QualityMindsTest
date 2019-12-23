@@ -11,7 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.AttachUtils;
 import utils.RestUtils;
+import utils.RobotUtils;
 
 @Slf4j
 public class BasePage {
@@ -20,11 +22,15 @@ public class BasePage {
     @Getter(AccessLevel.PUBLIC)
     protected RestUtils restUtils;
     protected JSCommands jsCommands;
+    protected AttachUtils attachUtils;
+    protected RobotUtils robotUtils;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         restUtils = new RestUtils();
+        robotUtils = new RobotUtils();
         jsCommands = new JSCommands(driver);
+        attachUtils = new AttachUtils(driver);
         PageFactory.initElements(driver, this);
     }
 

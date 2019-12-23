@@ -37,7 +37,7 @@ public class ContactPage extends ContactLocators {
 
     @Step("Verification of loading Kontakt page")
     public ContactPage verifyLoadingKontaktPage() {
-        new JSCommands(driver).jsVerifyPageState();
+        jsCommands.jsVerifyPageState();
         Assert.assertEquals(driver.getCurrentUrl(), "https://qualityminds.de/kontakt/");
         log.info("Page Kontakt & Anfahrt is loaded and url is correct");
         return this;
