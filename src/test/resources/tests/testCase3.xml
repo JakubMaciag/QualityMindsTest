@@ -1,0 +1,86 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Tasks - QM recruitment 3" parallel="false">
+    <test name="Task 3 - chrome" group-by-instances="true">
+        <parameter name="browserName" value="chrome"></parameter>
+        <classes>
+            <class name="tests.TestCase3">
+                <methods>
+                    <include name="openMainPage">Opening QM main page</include>
+                    <include name="openCareerPage">Open Karriere page</include>
+                    <include name="clickApplyNowBtnAndVerifyPageApplyForm">Click Bewirb dich jetzt button and verify
+                        apply now page
+                    </include>
+                    <include name="clickApplyFormButtonAndVerifyNotSendingForm">Click on Jetzt bewerben button and
+                        verify if message is not be submitted
+                    </include>
+                    <include name="verifyIfValidationMessagesAreDisplayed">Verification if validation messages are
+                        displayed
+                    </include>
+                    <include name="fillFirstAndLastNameTextFields">Fill the Vorname and Nachname fields</include>
+                    <include name="clickApplyFormButtonAndVerifyNotSendingFormSecondTime">Click on Jetzt bewerben button
+                        and
+                        verify if message is not be submitted
+                    </include>
+                    <include name="verifyIfValidationMessageIsDisplayedOnlyForEmail">Verification if validation message
+                        is displayed only for Email
+                    </include>
+                    <include name="fillEmailTextFieldWithInvalidValue">Fill the E-mail field with an Invalid value
+                    </include>
+                    <include name="clickApplyFormButtonAndVerifyNotSendingFormThirdTime">Click on Jetzt bewerben button
+                        and
+                        verify if message is not be submitted
+                    </include>
+                    <include name="clickAttachFileButtonAndVerivyAttaching">Attach file with DATEIEN HOCHLADEN button
+                        and verify if filename of attachment is displayed above
+                    </include>
+                    <include name="checkDataProtectionCheckboxAndVerifyIfIsChecked">Check the checkbox for
+                        Datenschutzerklärung and
+                        verification if is checked
+                    </include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Task 3 - firefox" group-by-instances="true">
+        <parameter name="browserName" value="firefox"></parameter>
+        <classes>
+            <class name="tests.TestCase3">
+                <methods>
+                    <include name="openMainPage">Opening QM main page</include>
+                    <include name="openCareerPage">Open Karriere page</include>
+                    <include name="clickApplyNowBtnAndVerifyPageApplyForm">Click Bewirb dich jetzt button and verify
+                        apply now page
+                    </include>
+                    <include name="clickApplyFormButtonAndVerifyNotSendingForm">Click on Jetzt bewerben button and
+                        verify if message is not be submitted
+                    </include>
+                    <include name="verifyIfValidationMessagesAreDisplayed">Verification if validation messages are
+                        displayed
+                    </include>
+                    <include name="fillFirstAndLastNameTextFields">Fill the Vorname and Nachname fields</include>
+                    <include name="clickApplyFormButtonAndVerifyNotSendingFormSecondTime">Click on Jetzt bewerben button
+                        and
+                        verify if message is not be submitted
+                    </include>
+                    <include name="verifyIfValidationMessageIsDisplayedOnlyForEmail">Verification if validation message
+                        is displayed only for Email
+                    </include>
+                    <include name="fillEmailTextFieldWithInvalidValue">Fill the E-mail field with an Invalid value
+                    </include>
+                    <include name="clickApplyFormButtonAndVerifyNotSendingFormThirdTime">Click on Jetzt bewerben button
+                        and
+                        verify if message is not be submitted
+                    </include>
+                    <include name="clickAttachFileButtonAndVerivyAttaching">Attach file with DATEIEN HOCHLADEN button
+                        and verify if filename of attachment is displayed above
+                    </include>
+                    <include name="checkDataProtectionCheckboxAndVerifyIfIsChecked">Check the checkbox for
+                        Datenschutzerklärung and
+                        verification if is checked
+                    </include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
