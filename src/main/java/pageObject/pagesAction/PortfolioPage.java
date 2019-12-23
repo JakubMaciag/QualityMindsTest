@@ -10,8 +10,6 @@ import pageObject.locators.PortfolioLocators;
 import utils.AttachUtils;
 import utils.TimeOuts;
 
-import java.io.File;
-
 @Slf4j
 public class PortfolioPage extends PortfolioLocators {
     private String linkWebAutomationMobileTesting = "https://qualityminds.de/team_page/wam-testing/";

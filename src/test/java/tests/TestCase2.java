@@ -25,7 +25,6 @@ public class TestCase2 extends BaseTest {
     public void goToPageWebAutomationAndMobileTesting() {
         new PortfolioPage(driver).goToWebAutomationAndMobileWebPageAndVerifyPage();
         new AttachUtils(driver).takeScreenShot("Step_3");
-
     }
 
     @Test(description = "Verification if Portfolio button is highlighted", dependsOnMethods = {"goToPageWebAutomationAndMobileTesting"})

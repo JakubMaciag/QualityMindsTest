@@ -1,6 +1,5 @@
 package pageObject.pagesAction;
 
-import org.openqa.selenium.WebElement;
 import pageObject.locators.MainLocators;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
@@ -38,14 +37,6 @@ public class MainPage extends MainLocators {
         return this;
     }
 
-    @Step("Click Kontakt button")
-    public MainPage clickBtnKontakt() {
-        waitUntilElementIsClickable(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true);
-        clickWebElement(btnKontaktList.get(0), TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, true, true);
-        log.info("Clicked button Kontakt");
-        return this;
-    }
-
     @Step("Click KONTAKT & ANFAHRT button in footer menu")
     public MainPage clickBtnKontaktAndAnfahrt() {
         jsCommands.jsScrollDown();
@@ -69,7 +60,6 @@ public class MainPage extends MainLocators {
         verifyIfPageIsLoaded();
         return this;
     }
-
 
     public MainPage verificationMainPageStuff(String basicUrl) {
         return this.verifyIfURLisCorrect(basicUrl)

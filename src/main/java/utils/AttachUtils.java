@@ -8,6 +8,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -55,5 +58,12 @@ public class AttachUtils {
             if (assertError)
                 Assert.fail("Directory does not exist " + pathDirectory);
         }
+    }
+
+    public void copyTextIntoClipboard(String text){
+        Toolkit tol = Toolkit.getDefaultToolkit();
+        Clipboard c = tol.getSystemClipboard();
+        c.setContents(new StringSelection(text), null);
+        log.info("Text copied into clipboard: "+text);
     }
 }

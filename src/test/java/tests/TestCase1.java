@@ -4,7 +4,7 @@ import io.qameta.allure.Allure;
 import org.apache.commons.lang.StringUtils;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-import pageObject.pagesAction.KontaktPage;
+import pageObject.pagesAction.ContactPage;
 import pageObject.pagesAction.MainPage;
 import org.testng.annotations.Test;
 import utils.AttachUtils;
@@ -25,14 +25,13 @@ public class TestCase1 extends BaseTest {
 
     @Test(description = "Open Kontakt page", dependsOnMethods = {"openMainPage"})
     public void openKontaktPage() {
-        new MainPage(driver).clickBtnKontakt();
-        page1 = new KontaktPage(driver).verifyKontaktPageAndGetSourceCode();
+        page1 = new ContactPage(driver).clickBtnKontakt().verifyKontaktPageAndGetSourceCode();
         new AttachUtils(driver).takeScreenShot("Step_2");
     }
 
     @Test(description = "Verify email existence", dependsOnMethods = {"openKontaktPage"})
     public void verificationOfEmailExistence() {
-        new KontaktPage(driver).verifyIfHelloEmailIsVisible();
+        new ContactPage(driver).verifyIfHelloEmailIsVisible();
         new AttachUtils(driver).takeScreenShot("Step_3");
     }
 
@@ -46,7 +45,7 @@ public class TestCase1 extends BaseTest {
     @Test(description = "Open Kontakt page again", dependsOnMethods = {"returnToMainPage"})
     public void openKontaktPageAgain() {
         new MainPage(driver).clickBtnKontaktAndAnfahrt();
-        page2 = new KontaktPage(driver).verifyKontaktPageAndGetSourceCode();
+        page2 = new ContactPage(driver).verifyKontaktPageAndGetSourceCode();
         new AttachUtils(driver).takeScreenShot("Step_5");
     }
 

@@ -1,17 +1,18 @@
 package pageObject;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.RestUtils;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 @Slf4j
 public class BasePage {
@@ -141,6 +142,17 @@ public class BasePage {
             log.error("Element was not found / is not visible");
             if (assertError)
                 Assert.fail("Element was not found / is not visible");
+        }
+    }
+
+    protected boolean waitUntilElementIsNotVisible(WebElement element, int time) {
+        log.info("Wait for element is it not visible");
+        WebDriverWait webDriverWait = new WebDriverWait(this.driver, time);
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOf(element));
+            return false;
+        } catch (NoSuchElementException e) {
+            return true;
         }
     }
 
