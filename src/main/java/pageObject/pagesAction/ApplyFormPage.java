@@ -23,7 +23,7 @@ public class ApplyFormPage extends ApplyFormLocators {
 
     @Step("Verification of loading Bewerbungsformular page")
     public ApplyFormPage verifyLoadingApplyFormPage() {
-        new JSCommands(driver).jsVerifyPageState();
+        jsCommands.jsVerifyPageState();
         Assert.assertEquals(driver.getCurrentUrl(), linkBewerbungsformular);
         log.info("Page Bewerbungsformular is loaded and url is correct");
         return this;
@@ -121,8 +121,8 @@ public class ApplyFormPage extends ApplyFormLocators {
 
     @Step("Attach file")
     public ApplyFormPage attachFile(boolean assertError) {
-        new AttachUtils(driver).copyTextIntoClipboard(System.getProperty("user.dir") + uploadFilePath);
-        new RobotUtils().robotSendCtrlVEnter();
+        attachUtils.copyTextIntoClipboard(System.getProperty("user.dir") + uploadFilePath);
+        robotUtils.robotSendCtrlVEnter();
         waitUntilAttributeContains(labelAttachedFileName, "innerHTML", fileName, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         System.out.println(labelAttachedFileName.getAttribute("innerHTML"));
         log.info("Attach file");

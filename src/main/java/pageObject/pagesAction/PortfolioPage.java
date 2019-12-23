@@ -134,14 +134,14 @@ public class PortfolioPage extends PortfolioLocators {
             path = path + "\\" + downloadedFileNameFlyer;
         else
             path = null;
-        new AttachUtils(driver).verifyIfFileExist(path, assertError);
+        attachUtils.verifyIfFileExist(path, assertError);
         log.info("File exist:" + path);
         Allure.attachment("File exist ", path);
         return this;
     }
 
     public PortfolioPage clearDownloadDirectory(String path) {
-        new AttachUtils(driver).clearDirectory(path);
+        attachUtils.clearDirectory(path);
         return this;
     }
 

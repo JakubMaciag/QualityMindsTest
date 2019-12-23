@@ -34,7 +34,7 @@ public class CareerPage extends CareerLocators {
 
     @Step("Verificaion of loading Karrier page")
     public CareerPage verifyLoadingCareerPage() {
-        new JSCommands(driver).jsVerifyPageState();
+        jsCommands.jsVerifyPageState();
         Assert.assertEquals(driver.getCurrentUrl(), linkKarrierePage);
         log.info("Page Karriere is loaded and url is correct");
         return this;
