@@ -32,9 +32,10 @@ public class BasePage {
         try {
             if (wantWait)
                 waitUntilElementIsClickable(element, time, assertError);
-            if (isEnabled(element) && isDisplayed(element))
+            if (isEnabled(element) && isDisplayed(element)) {
                 element.click();
-            log.info("Element was clicked: " + element.toString());
+                log.info("Element was clicked: " + element.toString());
+            }
         } catch (Exception e) {
             log.error("Element was not clicked: " + element.toString());
             if (assertError)
