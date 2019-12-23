@@ -5,14 +5,10 @@ import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 
-
 import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
 public class RestUtils {
-    private String toString(int status) {
-        return String.valueOf(status);
-    }
 
     private int returnHTTPStatus(String baseUrl) {
         Response response = given()

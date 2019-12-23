@@ -16,8 +16,8 @@ import java.util.Properties;
 public class PropertiesUtils {
     private static final String PROPERTIES_FILE = "/config.properties";
     private static final String URL = "url";
-    private static final String DOWNLOAD_DIRECTORY_CHROME ="linkForChrome";
-    private static final String DOWNLOAD_DIRECTORY_FIREFOX ="linkForFirefox";
+    private static final String DOWNLOAD_DIRECTORY_CHROME = "linkForChrome";
+    private static final String DOWNLOAD_DIRECTORY_FIREFOX = "linkForFirefox";
 
     @Getter(AccessLevel.PUBLIC)
     @NonNull
@@ -35,7 +35,7 @@ public class PropertiesUtils {
 
     private void loadSettingsDataFromProperties() {
         Properties properties = getPropertiesFromFile();
-        url =properties.getProperty(URL);
+        url = properties.getProperty(URL);
         downloadDirecotryForChrome = properties.getProperty(DOWNLOAD_DIRECTORY_CHROME);
         downloadDirecotryForFirefox = properties.getProperty(DOWNLOAD_DIRECTORY_FIREFOX);
         log.info("Properties variable assignment");

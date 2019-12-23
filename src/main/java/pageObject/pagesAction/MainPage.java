@@ -1,10 +1,10 @@
 package pageObject.pagesAction;
 
-import pageObject.locators.MainLocators;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import pageObject.locators.MainLocators;
 import utils.TimeOuts;
 
 @Slf4j
@@ -50,7 +50,8 @@ public class MainPage extends MainLocators {
     public MainPage verifyHomeButton(boolean assertError) {
         waitUntilElementIsClickable(btnHome, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         waitUntilCSSValueContains(btnHome, "color", greenHighlighted, TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
-        waitUntilAttributeContains(btnHomeBackground, "class", "current-menu-item", TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
+        waitUntilAttributeContains(btnHomeBackground, "class", "current-menu-item",
+                TimeOuts.TIME_WAIT_FOR_ELEMENT_LONG, assertError);
         log.info("Home button is highlighted");
         return this;
     }
@@ -61,15 +62,11 @@ public class MainPage extends MainLocators {
         return this;
     }
 
-    public MainPage verificationMainPageStuff(String basicUrl,boolean assertError) {
+    public MainPage verificationMainPageStuff(String basicUrl, boolean assertError) {
         return this.verifyIfURLisCorrect(basicUrl)
                 .verifyHTTPStatusAndJSComplete()
                 .verifyLogo(assertError)
                 .verifyBtnAcceptCookies(assertError)
                 .verifyHomeButton(assertError);
     }
-
-
-
-
 }

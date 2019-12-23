@@ -6,10 +6,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pageObject.JSCommands;
 import pageObject.locators.ContactLocators;
-import org.openqa.selenium.WebDriver;
 import utils.TimeOuts;
 
 import java.util.Arrays;
@@ -35,7 +35,7 @@ public class ContactPage extends ContactLocators {
         return this;
     }
 
-    @Step("Verificaion of loading Kontakt page")
+    @Step("Verification of loading Kontakt page")
     public ContactPage verifyLoadingKontaktPage() {
         new JSCommands(driver).jsVerifyPageState();
         Assert.assertEquals(driver.getCurrentUrl(), "https://qualityminds.de/kontakt/");
@@ -59,13 +59,14 @@ public class ContactPage extends ContactLocators {
     @Step("Verification if specified email is visible")
     public ContactPage verifyIfHelloEmailIsVisible(boolean assertError) {
         jsCommands.jsScrollToElement(txtSpecifiedEmail_Hello);
-        waitUntilElementContainsText(txtSpecifiedEmail_Hello, "hello@qualityminds.de", TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
+        waitUntilElementContainsText(txtSpecifiedEmail_Hello, "hello@qualityminds.de",
+                TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         Allure.attachment("Email", "hello@qualityminds.de");
         log.info("Verify if hello@qualityminds.de is visible");
         return this;
     }
 
-    public List<String> verifyKontaktPageAndGetSourceCode(boolean  assertError) {
+    public List<String> verifyKontaktPageAndGetSourceCode(boolean assertError) {
         this.verifyLoadingKontaktPage()
                 .verifyIfKontaktAndAnfahrtIsDisplayed(assertError)
                 .saveKontaktPageSource();

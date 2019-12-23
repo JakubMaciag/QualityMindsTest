@@ -13,13 +13,6 @@ import org.testng.annotations.Parameters;
 
 @Slf4j
 public class BaseTest {
-    public BaseTest() {
-        super();
-        propertiesUtils = new PropertiesUtils();
-        driverSettings = new DriverSettings(propertiesUtils);
-        attachUtils = new AttachUtils(getDriver());
-    }
-
     @Getter(AccessLevel.PUBLIC)
     protected WebDriver driver;
     protected PropertiesUtils propertiesUtils;
@@ -31,12 +24,18 @@ public class BaseTest {
     protected String downloadDirectory;
     private DriverSettings driverSettings;
     private AttachUtils attachUtils;
+    public BaseTest() {
+        super();
+        propertiesUtils = new PropertiesUtils();
+        driverSettings = new DriverSettings(propertiesUtils);
+        attachUtils = new AttachUtils(getDriver());
+    }
 
-    private String setDirectoryByBrowser(String browser){
-        if(browser.equals("chrome"))
-            return System.getProperty("user.dir")+propertiesUtils.getDownloadDirecotryForChrome();
-        else if(browser.equals("firefox"))
-            return System.getProperty("user.dir")+propertiesUtils.getDownloadDirecotryForFirefox();
+    private String setDirectoryByBrowser(String browser) {
+        if (browser.equals("chrome"))
+            return System.getProperty("user.dir") + propertiesUtils.getDownloadDirecotryForChrome();
+        else if (browser.equals("firefox"))
+            return System.getProperty("user.dir") + propertiesUtils.getDownloadDirecotryForFirefox();
         else
             return null;
     }
@@ -46,6 +45,7 @@ public class BaseTest {
     public void setUp(String browserName) {
         this.browserName = browserName;
         downloadDirectory = setDirectoryByBrowser(browserName);
+        attachUtils.createTmpFolders(downloadDirectory);
         driver = driverSettings.runBrowser(browserName);
         log.info("Beginning of suite");
     }

@@ -127,7 +127,7 @@ public class PortfolioPage extends PortfolioLocators {
     }
 
     @Step("Verification if file can be downloaded")
-    public PortfolioPage verifyIfFileCanBeDownloaded(String path, String brwoser,boolean assertError) {
+    public PortfolioPage verifyIfFileCanBeDownloaded(String path, String brwoser, boolean assertError) {
         if (brwoser.equals("chrome"))
             path = path + "\\" + downloadedFileNameFlyer + ".pdf";
         else if (brwoser.equals("firefox"))
@@ -135,7 +135,7 @@ public class PortfolioPage extends PortfolioLocators {
         else
             path = null;
         new AttachUtils(driver).verifyIfFileExist(path, assertError);
-        log.info("File exist:" +path);
+        log.info("File exist:" + path);
         Allure.attachment("File exist ", path);
         return this;
     }
@@ -164,10 +164,10 @@ public class PortfolioPage extends PortfolioLocators {
                 .verifyIfFlyerButtonIsDisplayedOnRight(assertError);
     }
 
-    public PortfolioPage verifyIfFileIsAvailableViaLink(String path, String browser,boolean assertError) {
+    public PortfolioPage verifyIfFileIsAvailableViaLink(String path, String browser, boolean assertError) {
         return this.clearDownloadDirectory(path)
                 .clickFlyerButton(assertError)
-                .verifyIfFileCanBeDownloaded(path, browser,assertError)
+                .verifyIfFileCanBeDownloaded(path, browser, assertError)
                 .clearDownloadDirectory(path);
     }
 }

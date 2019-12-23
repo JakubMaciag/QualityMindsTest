@@ -3,7 +3,6 @@ package pageObject;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -159,7 +158,7 @@ public class BasePage {
 
     protected void waitUntilElementContainsText(WebElement element, String text, int time, boolean assertError) {
         try {
-            log.info("Waiting for text containded by element");
+            log.info("Waiting for text contained by element");
             WebDriverWait waitTmp = new WebDriverWait(this.driver, time);
             waitTmp.until(ExpectedConditions.textToBePresentInElement(element, text));
             log.info("Element contains text");

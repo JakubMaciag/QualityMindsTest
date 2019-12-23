@@ -35,13 +35,14 @@ public class JSCommands {
 
     @Step("Verify if page is loaded")
     public void jsVerifyPageState() {
-        Assert.assertEquals(((JavascriptExecutor) driver).executeScript("return document.readyState").toString().trim(), "complete");
+        Assert.assertEquals(((JavascriptExecutor) driver).executeScript("return document.readyState").toString().trim(),
+                "complete");
         log.info("Page state is complete: " + driver.getCurrentUrl());
     }
 
     @Step("Scroll down - to point")
     public void jsScrollToPoint(int x, int y) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo("+x+", "+y+")");
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(" + x + ", " + y + ")");
         log.info("Scrolled to point");
     }
 }

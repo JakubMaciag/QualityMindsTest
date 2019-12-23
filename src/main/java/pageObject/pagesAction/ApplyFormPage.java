@@ -20,7 +20,7 @@ public class ApplyFormPage extends ApplyFormLocators {
         super(driver);
     }
 
-    @Step("Verificaion of loading Bewerbungsformular page")
+    @Step("Verification of loading Bewerbungsformular page")
     public ApplyFormPage verifyLoadingApplyFormPage() {
         new JSCommands(driver).jsVerifyPageState();
         Assert.assertEquals(driver.getCurrentUrl(), linkBewerbungsformular);
@@ -28,7 +28,7 @@ public class ApplyFormPage extends ApplyFormLocators {
         return this;
     }
 
-    @Step("Verificaion of existence elements on page")
+    @Step("Verification of existence elements on page")
     public ApplyFormPage verifyIfFormElementsExist(boolean assertError) {
         waitUntilElementIsVisible(labelCareerApplicationForm, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         jsCommands.jsScrollToElement(btnBackToCareerPage);
@@ -67,7 +67,7 @@ public class ApplyFormPage extends ApplyFormLocators {
         for (org.openqa.selenium.WebElement element : msgMadatoryFieldsList) {
             waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         }
-        log.info("Maandatory fields messages exist");
+        log.info("Mandatory fields messages exist");
         return this;
     }
 
@@ -78,7 +78,7 @@ public class ApplyFormPage extends ApplyFormLocators {
             waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         }
         Assert.assertTrue(isDisplayed(msgMandatoryFieldForEmail));
-        log.info("Maandatory field message exists only for email in apply form");
+        log.info("Mandatory field message exists only for email in apply form");
         return this;
     }
 
@@ -139,7 +139,7 @@ public class ApplyFormPage extends ApplyFormLocators {
 
     @Step("Verification if checkbox for Datenschutzerklärung is checked")
     public ApplyFormPage verifyIfCheckBoxDataProtectionIsChecked(boolean assertError) {
-        waitUntilElementIsClickable(checkBoxDataProtection,TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL,assertError);
+        waitUntilElementIsClickable(checkBoxDataProtection, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         Assert.assertTrue(isSelected(checkBoxDataProtection));
         log.info("Checkbox Datenschutzerklärung is checked");
         return this;

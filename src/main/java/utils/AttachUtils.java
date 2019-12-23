@@ -60,10 +60,21 @@ public class AttachUtils {
         }
     }
 
-    public void copyTextIntoClipboard(String text){
+    public void copyTextIntoClipboard(String text) {
         Toolkit tol = Toolkit.getDefaultToolkit();
         Clipboard c = tol.getSystemClipboard();
         c.setContents(new StringSelection(text), null);
-        log.info("Text copied into clipboard: "+text);
+        log.info("Text copied into clipboard: " + text);
+    }
+
+    public void createTmpFolders(String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            if (file.mkdir()) {
+                System.out.println("Directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
     }
 }

@@ -34,7 +34,8 @@
                     <include name="clickAttachFileButtonAndVerivyAttaching">Attach file with DATEIEN HOCHLADEN button
                         and verify if filename of attachment is displayed above
                     </include>
-                    <include name="checkDataProtectionCheckboxAndVerifyIfIsChecked">Check the checkbox for Datenschutzerklärung and
+                    <include name="checkDataProtectionCheckboxAndVerifyIfIsChecked">Check the checkbox for
+                        Datenschutzerklärung and
                         verification if is checked
                     </include>
                 </methods>
@@ -74,7 +75,8 @@
                     <include name="clickAttachFileButtonAndVerivyAttaching">Attach file with DATEIEN HOCHLADEN button
                         and verify if filename of attachment is displayed above
                     </include>
-                    <include name="checkDataProtectionCheckboxAndVerifyIfIsChecked">Check the checkbox for Datenschutzerklärung and
+                    <include name="checkDataProtectionCheckboxAndVerifyIfIsChecked">Check the checkbox for
+                        Datenschutzerklärung and
                         verification if is checked
                     </include>
                 </methods>

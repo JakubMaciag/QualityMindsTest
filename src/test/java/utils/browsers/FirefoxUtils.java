@@ -16,7 +16,7 @@ public class FirefoxUtils {
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         profile.setPreference("browser.download.folderList", 2);
         profile.setPreference("handlesAlerts", false);
-        profile.setPreference("browser.download.dir", System.getProperty("user.dir")+downloadDirectory);
+        profile.setPreference("browser.download.dir", System.getProperty("user.dir") + downloadDirectory);
         profile.setPreference("browser.helperApps.neverAsk.saveToDisk", "application/pdf,application/x-pdf,application/octet-stream");
         profile.setPreference("browser.download.useDownloadDir", true);
         profile.setAcceptUntrustedCertificates(true);
@@ -25,7 +25,7 @@ public class FirefoxUtils {
         profile.setPreference("browser.download.manager.showWhenStarting", false);
         profile.setPreference("browser.download.manager.useWindow", false);
         profile.setPreference("browser.helperApps.alwaysAsk.force", false);
-        capabilities.setCapability(FirefoxDriver.PROFILE,profile);
+        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
         capabilities.setCapability("marionette", true);
         log.info("Set firefox browser settings");
         return capabilities;

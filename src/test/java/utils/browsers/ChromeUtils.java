@@ -12,14 +12,14 @@ import java.util.Map;
 @Slf4j
 public class ChromeUtils {
 
-    private ChromeOptions prepareChromeOptions(String downloadDirectory){
+    private ChromeOptions prepareChromeOptions(String downloadDirectory) {
         ChromeOptions chromeOptions = new ChromeOptions();
         Map<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("download.default_directory", System.getProperty("user.dir")+downloadDirectory);
+        chromePrefs.put("download.default_directory", System.getProperty("user.dir") + downloadDirectory);
         chromePrefs.put("download.prompt_for_download", false);
         chromePrefs.put("plugins.plugins_disabled", "Chrome PDF Viewer");
-        chromePrefs.put("useAutomationExtension",false);
+        chromePrefs.put("useAutomationExtension", false);
         chromeOptions.addArguments("--test-type");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-software-rasterizer");
@@ -30,7 +30,7 @@ public class ChromeUtils {
         return chromeOptions;
     }
 
-    public WebDriver setUpChromeDriver(String downloadDirectory){
+    public WebDriver setUpChromeDriver(String downloadDirectory) {
         WebDriverManager.chromedriver().setup();
         log.info("Set up chrome browser driver");
         return new ChromeDriver(prepareChromeOptions(downloadDirectory));

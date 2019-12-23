@@ -12,7 +12,7 @@ public class TestCase2 extends BaseTest {
     @Test(description = "Open QM main page")
     public void openMainPage() {
         driver.get(propertiesUtils.getUrl());
-        new MainPage(driver).verificationMainPageStuff(propertiesUtils.getUrl(),assertError);
+        new MainPage(driver).verificationMainPageStuff(propertiesUtils.getUrl(), assertError);
         new AttachUtils(driver).takeScreenShot("Step_1");
     }
 
@@ -46,9 +46,9 @@ public class TestCase2 extends BaseTest {
         new AttachUtils(driver).takeScreenShot("Step_6");
     }
 
-    @Test(description = "Verification if file is available via download link",dependsOnMethods = {"verifyFlyerButtonContainsLink"})
-    public void verifyIfFileIsAvailableViaDownloadedLink(){
-        new PortfolioPage(driver).verifyIfFileIsAvailableViaLink(getDownloadDirectory(),getBrowserName(),assertError);
+    @Test(description = "Verification if file is available via download link", dependsOnMethods = {"verifyFlyerButtonContainsLink"})
+    public void verifyIfFileIsAvailableViaDownloadedLink() {
+        new PortfolioPage(driver).verifyIfFileIsAvailableViaLink(getDownloadDirectory(), getBrowserName(), assertError);
         new AttachUtils(driver).takeScreenShot("Step_7");
     }
 }

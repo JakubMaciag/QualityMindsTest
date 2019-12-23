@@ -7,10 +7,10 @@ import java.awt.event.KeyEvent;
 
 @Slf4j
 public class RobotUtils {
-    public RobotUtils(){
+    public RobotUtils() {
     }
 
-    public void robotSendCtrlVEnter(){
+    public void robotSendCtrlVEnter() {
         Robot r = null;
         try {
             r = new Robot();
@@ -27,7 +27,7 @@ public class RobotUtils {
             log.info("Robot sent ctrl v enter");
         } catch (AWTException | InterruptedException e) {
             e.printStackTrace();
-            log.error("Robot error: "+e.toString());
+            log.error("Robot error: " + e.toString());
         }
     }
 }
