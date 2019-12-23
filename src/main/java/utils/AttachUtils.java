@@ -43,8 +43,7 @@ public class AttachUtils {
         }
     }
 
-    public void verifyIfFileExist(String path, boolean assertError) {
-        String pathDirectory = path;
+    public void verifyIfFileExist(String pathDirectory, boolean assertError) {
         File file = new File(pathDirectory);
         try {
             Thread.sleep(TimeOuts.DOWNLOAD_DELAY);
