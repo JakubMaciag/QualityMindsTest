@@ -10,7 +10,7 @@ import utils.TimeOuts;
 @Slf4j
 public class MainPage extends MainLocators {
 
-    private String greenHighlighted = "(130, 186, 69";
+    private String greenHighlighted = "130, 186, 69";
 
     public MainPage(WebDriver driver) {
         super(driver);

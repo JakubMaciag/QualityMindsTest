@@ -8,4 +8,7 @@ Because of that I have to use java robot (other option is autoit).
 There is other way to upload file - sending path into input element on website, 
 then the system window does not appear.
 
+How to run report: allure serve path_to_target/allure-results
+
+
 Fun fact: in firefox there is no .pdf extension in flyer file

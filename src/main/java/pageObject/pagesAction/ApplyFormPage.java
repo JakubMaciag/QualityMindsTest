@@ -3,6 +3,7 @@ package pageObject.pagesAction;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pageObject.JSCommands;
 import pageObject.locators.ApplyFormLocators;
@@ -64,7 +65,7 @@ public class ApplyFormPage extends ApplyFormLocators {
     @Step("Verification if validation messages are displayed")
     public ApplyFormPage verifyIfValidationMessagesExist(boolean assertError) {
         Assert.assertEquals(msgMadatoryFieldsList.size(), 3);
-        for (org.openqa.selenium.WebElement element : msgMadatoryFieldsList) {
+        for (WebElement element : msgMadatoryFieldsList) {
             waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         }
         log.info("Mandatory fields messages exist");
@@ -74,7 +75,7 @@ public class ApplyFormPage extends ApplyFormLocators {
     @Step("Verification if validation message is displayed only for email")
     public ApplyFormPage verifyIfValidationMessageExistsOnlyForEmail(boolean assertError) {
         Assert.assertEquals(msgMadatoryFieldsList.size(), 1);
-        for (org.openqa.selenium.WebElement element : msgMadatoryFieldsList) {
+        for (WebElement element : msgMadatoryFieldsList) {
             waitUntilElementIsVisible(element, TimeOuts.TIME_WAIT_FOR_ELEMENT_NORMAL, assertError);
         }
         Assert.assertTrue(isDisplayed(msgMandatoryFieldForEmail));
